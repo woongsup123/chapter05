@@ -25,5 +25,4 @@ public class SmartPhone extends MusicPhone {
 		System.out.println("다운로드해서 음악재생");
 	}
 	
-	
 }
