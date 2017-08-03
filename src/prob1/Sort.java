@@ -23,7 +23,6 @@ public class Sort {
 		}
 	}
 	
-	
 	public static void bubbleSort(int[] arr){
 		int maxPos = arr.length;
 		for (int i = 0; i < maxPos; i++) {
