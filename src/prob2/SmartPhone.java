@@ -5,13 +5,13 @@ public class SmartPhone extends MusicPhone {
 	@Override
 	public void execute( String function ) {
 		
-		if ( function == "음악") {
+		if ( function.equals("음악")) {
 			playMusic();
 		}
-		else if ( function == "통화") {
+		else if ( function.equals("통화")) {
 			super.execute( function );
 		}
-		else if ( function == "앱") {
+		else if ( function.equals("앱")) {
 			runApp();
 		}
 	}
