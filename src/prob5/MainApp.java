@@ -2,28 +2,29 @@ package prob5;
 
 public class MainApp {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
-			MyStack stack = new MyStack(3);
-			stack.push("Hello");
-			stack.push("World");
-			stack.push("!!!");
-			stack.push("java");
-			stack.push(".");
+			MyStack<? extends Number> stack = new MyStack(3);
+			stack.push(3);
+			stack.push(4);
+			stack.push(5);
+			stack.push(9.6);
+			stack.push(10);
 
 			while (stack.isEmpty() == false) {
 				// 런타임 에러
 				// generic을 사용하지 않으면 코드 작성시 타입 체크를 하지 않음
 				// Integer s = (Integer)stack.pop();
-				String s = stack.pop();
+				Object s = stack.pop();
 				
 				System.out.println( s );
 			}
 
 			System.out.println("======================================");
 
-			stack = new MyStack(3);
-			stack.push("Hello");
+			stack = new MyStack<>(3);
+			stack.push(43);
 
 			System.out.println(stack.pop());
 			System.out.println(stack.pop()); // exception occurs here

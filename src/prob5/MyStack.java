@@ -3,37 +3,42 @@ package prob5;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class MyStack {
+public class MyStack <E>{
 	
 	private final int BOTTOM = 0;
-	private int top = -1;
+	private int top;
 	private int capacity;
-	private String[] buffer;
+	private E[] buffer;
 	
+	@SuppressWarnings("unchecked")
 	public MyStack(int capacity) {
+		top = -1;
 		this.capacity = capacity;
-		buffer = new String[capacity];
+		buffer = (E[])new Object[capacity];
 	}
 
-	public void push(String str) {
+	@SuppressWarnings("unchecked")
+	public void push(Number n) {
 		
 		if (top >= capacity - 1) { //if stack is full
-			String[] tempBuffer = new String[capacity];
+			E[] tempBuffer = (E[])new Object[capacity];
 			capacity *= 2;
-			tempBuffer = Stream.concat(Arrays.stream(buffer), Arrays.stream(tempBuffer)).toArray(String[]::new);
-			buffer = new String[capacity];
+			tempBuffer = (E[]) Stream.concat(	Arrays.stream(buffer),
+										Arrays.stream(tempBuffer)
+									  ).toArray();
+			buffer = (E[])new Object[capacity];
 			buffer = tempBuffer;
 		}
-		buffer[++top] = str;
+		buffer[++top] = (E) n;
 	}
 
-	public String pop() throws MyStackException {
+	public E pop() throws MyStackException {
 		
 		if (top < BOTTOM) {
 			throw new MyStackException();
 		}
 		
-		String returnVal = buffer[top];
+		E returnVal = buffer[top];
 		buffer[top] = null;
 		top--;
 		
@@ -41,10 +46,6 @@ public class MyStack {
 	}
 
 	public boolean isEmpty() {
-		
-		if (buffer[BOTTOM] == null) {
-			return true;
-		}
-		return false;
+		return top == -1;
 	}
 }
