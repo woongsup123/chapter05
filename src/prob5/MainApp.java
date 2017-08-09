@@ -2,10 +2,9 @@ package prob5;
 
 public class MainApp {
 
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		try {
-			MyStack<? extends Number> stack = new MyStack(3);
+			MyStack<? extends Number> stack = new MyStack<>(3);
 			stack.push(3);
 			stack.push(4);
 			stack.push(5);
